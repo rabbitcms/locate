@@ -1,0 +1,20 @@
+{
+  "name": "rabbitcms/locate",
+  "description": "Locate is a Laravel package for easily accessing visitor geolocation data.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dmytro Kulyk",
+      "email": "lnkvisitor.ts@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "RabbitCMS\\Locate\\": "src/"
+    }
+  }
+}
