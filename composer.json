@@ -10,7 +10,8 @@
     }
   ],
   "require": {
-    "guzzlehttp/guzzle": "^6.2"
+    "php": ">=5.6.4",
+    "maxmind-db/reader": "^1.1"
   },
   "autoload": {
     "psr-4": {

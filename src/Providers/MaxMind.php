@@ -15,7 +15,7 @@ class MaxMind extends Provider
     {
         // Jump ship if no key has been specified
         if (!array_key_exists('maxmind_key', $this->config)) {
-            return false;
+            throw new LocationNotFound();
         }
         $options = [
             'l' => $this->config['maxmind_key'],

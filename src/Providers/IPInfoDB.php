@@ -12,7 +12,7 @@ class IPInfoDB extends Provider
     {
         // Jump ship if no key has been specified
         if (!array_key_exists('ipinfodb_key', $this->config)) {
-            return false;
+            throw new LocationNotFound();
         }
         $options = [
             'key'    => $this->config['ipinfodb_key'],
@@ -24,14 +24,15 @@ class IPInfoDB extends Provider
             $response = json_decode($response, true);
             // Verify fields
             if (!isset($response['statusCode']) || $response['statusCode'] != 'OK') {
-                return false;
+                throw new LocationNotFound();
             }
             $required_fields = ['cityName', 'regionName', 'latitude', 'longitude'];
             foreach ($required_fields AS $field) {
                 if (!isset($response[$field]) || empty($response[$field])) {
-                    return false;
+                    throw new LocationNotFound();
                 }
             }
+            //dd($response);
 
             return new Location(
                 'IPInfoDB', $ip, [

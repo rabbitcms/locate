@@ -31,7 +31,7 @@ class FreeGeoIP extends Provider
                     'state_code'   => strtoupper($response['region_code']),
                     'country'      => ucwords(strtolower($response['country_name'])),
                     'country_code' => strtoupper($response['country_code']),
-                    'zipcode'      => $response['zipcode'],
+                    'zipcode'      => $response['zip_code'],
                     'lat'          => $response['latitude'],
                     'lng'          => $response['longitude'],
                 ]

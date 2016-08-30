@@ -16,7 +16,7 @@ class LocateServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $configPath = realpath(__DIR__ . '/../../config/config.php');
+        $configPath = realpath(__DIR__ . '/../config/config.php');
 
         $this->mergeConfigFrom($configPath, "locate");
 

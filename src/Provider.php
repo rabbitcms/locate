@@ -24,10 +24,10 @@ abstract class Provider
      */
     public static function getLocation($ip)
     {
-        return \Cache::remember(
-            self::CACHE_KEY . '.' . $ip,
-            \Config::get('locate.cache'),
-            function () use ($ip) {
+        //return \Cache::remember(
+        //    self::CACHE_KEY . '.' . $ip,
+        //    \Config::get('locate.cache'),
+        //    function () use ($ip) {
                 if (!self::checkIp($ip)) {
                     throw new LocationNotFound("IP $ip is reserved.");
                 }
@@ -40,8 +40,8 @@ abstract class Provider
                     }
                 }
                 throw new LocationNotFound('', 0, $p);
-            }
-        );
+        //    }
+        //);
     }
 
     /**
@@ -96,7 +96,7 @@ abstract class Provider
      */
     public static function factory($provider)
     {
-        $class = new \ReflectionClass(__NAMESPACE__ . '\\' . $provider);
+        $class = new \ReflectionClass(__NAMESPACE__ . '\\Providers\\' . $provider);
         /* @var Provider $provider */
         $provider = $class->newInstance();
 

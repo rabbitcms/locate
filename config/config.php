@@ -12,15 +12,21 @@ return [
     'maxmind_key'      => env('LOCATE_MAXMIND_KEY', ''),
 
     /**
+     * MaxMind DB path
+     */
+    'maxmind_path'     => env('LOCATE_MAXMIND_PATH', storage_path('app/geoip.mmdb')),
+
+    /**
      * IPInfoDB API Key (http://ipinfodb.com/register.php)
      */
     'ipinfodb_key'     => env('LOCATE_IPINFODB_KEY', ''),
 
     /**
      * Service priority
-     * Options: 'MaxMind', 'IPInfoDB', 'FreeGeoIP'
+     * Options: 'MaxMind', 'MaxMindDB', 'IPInfoDB', 'FreeGeoIP'
      */
     'service_priority' => [
+        'MaxMindDB',
         'IPInfoDB',
         'MaxMind',
         'FreeGeoIP',
