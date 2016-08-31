@@ -20,7 +20,7 @@ class FreeGeoIP extends Provider
             $required_fields = ['city', 'region_name', 'latitude', 'longitude'];
             foreach ($required_fields AS $field) {
                 if (!isset($response[$field]) || empty($response[$field])) {
-                    return false;
+                    throw new LocationNotFound();
                 }
             }
 

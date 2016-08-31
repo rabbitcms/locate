@@ -21,13 +21,14 @@ abstract class Provider
      * @param  string $ip Optional
      *
      * @return Location
+     * @throws LocationNotFound
      */
     public static function getLocation($ip)
     {
-        //return \Cache::remember(
-        //    self::CACHE_KEY . '.' . $ip,
-        //    \Config::get('locate.cache'),
-        //    function () use ($ip) {
+        return \Cache::remember(
+            self::CACHE_KEY . '.' . $ip,
+            \Config::get('locate.cache'),
+            function () use ($ip) {
                 if (!self::checkIp($ip)) {
                     throw new LocationNotFound("IP $ip is reserved.");
                 }
@@ -40,8 +41,8 @@ abstract class Provider
                     }
                 }
                 throw new LocationNotFound('', 0, $p);
-        //    }
-        //);
+            }
+        );
     }
 
     /**
