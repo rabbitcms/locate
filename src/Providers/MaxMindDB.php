@@ -18,6 +18,9 @@ class MaxMindDB extends Provider
 
         $reader = new Reader($this->config['maxmind_path']);
         $data = $reader->get($ip);
+        if (!is_array($data)) {
+            throw new LocationNotFound();
+        }
 
         return new Location(
             'MaxMindDB', $ip, [
