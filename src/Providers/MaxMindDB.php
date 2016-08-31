@@ -21,9 +21,9 @@ class MaxMindDB extends Provider
 
         return new Location(
             'MaxMindDB', $ip, [
-                'city'         => $data['city']['names']['en'],
-                'state'        => $data['subdivisions'][0]['names']['en'],
-                'state_code'   => $data['subdivisions'][0]['iso_code'],
+                'city'         => array_key_exists('city', $data) ? $data['city']['names']['en'] : null,
+                'state'        => array_key_exists('subdivisions', $data) ? $data['subdivisions'][0]['names']['en'] : null,
+                'state_code'   => array_key_exists('subdivisions', $data) ? $data['subdivisions'][0]['iso_code'] : null,
                 'country'      => $data['country']['names']['en'],
                 'country_code' => $data['country']['iso_code'],
                 'lat'          => $data['location']['latitude'],
